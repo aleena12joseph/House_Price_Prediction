@@ -1,96 +1,106 @@
-# 🏠 House Price Prediction Using Machine Learning
+# 🏡 Boston Housing Price Prediction – Algorithm Comparison
 
-A machine learning project that predicts house prices using features like area, bedrooms, bathrooms, and furnishing status using the Linear Regression algorithm.
+A machine learning project that predicts **house prices** using multiple algorithms on the **Boston Housing dataset**.  
+The project compares **Linear Regression, Random Forest, and XGBoost** to evaluate which algorithm performs best.
 
 ---
 
 ## 📌 Problem Statement
 
-To build a predictive system that estimates the price of houses based on historical data and features. This aids buyers and sellers in making informed decisions.
+To build a predictive system that estimates the **median value of homes (MEDV)** in Boston based on socio-economic and structural features.  
+The goal is to compare multiple regression algorithms and identify the most effective one.
 
 ---
 
 ## 💡 Proposed Solution
 
-* Use historical housing data with multiple features
-* Apply preprocessing and handle categorical data
-* Train a Linear Regression model
-* Evaluate accuracy using standard metrics
-* Visualize prediction vs actual results
+* Use the **Boston Housing dataset** containing 13 independent features and the target variable `MEDV`.  
+* Preprocess the data and split into training/testing sets.  
+* Train 3 models:
+  - **Linear Regression** – baseline model
+  - **Random Forest Regressor** – ensemble model
+  - **XGBoost Regressor** – gradient boosting model  
+* Evaluate using **RMSE** and **R² score**.  
+* Compare performance and visualize results.  
 
 ---
 
 ## 🚰 Technologies Used
 
-* Python
-* Google Colab
-* pandas, numpy – for data processing
-* seaborn, matplotlib – for visualization
-* scikit-learn – for machine learning models and evaluation
+* Python  
+* pandas, numpy – data processing  
+* seaborn, matplotlib – visualization  
+* scikit-learn – regression models & metrics  
+* xgboost – gradient boosting  
 
 ---
 
 ## 📁 Dataset
 
-The dataset (`Housing.csv`) contains attributes:
+The dataset (`boston.csv`) includes features like:  
 
-* `price` (target variable)
-* `area`, `bedrooms`, `bathrooms`, `stories`, `parking` (numerical)
-* `mainroad`, `guestroom`, `basement`, `hotwaterheating`, `airconditioning`, `prefarea`, `furnishingstatus` (categorical)
+- **CRIM**: Crime rate per capita  
+- **ZN**: Proportion of residential land zoned  
+- **RM**: Average number of rooms per dwelling  
+- **LSTAT**: % lower status of population  
+- **PTRATIO**: Pupil-teacher ratio  
+- **MEDV**: Median value of owner-occupied homes (target)  
 
 ---
 
-## 🧠 Machine Learning Model
+## 🧠 Machine Learning Models
 
-### 🔹 Algorithm: Linear Regression
+### 🔹 Linear Regression
+* Simple, interpretable baseline model.  
+* Assumes linear relationship between features and price.  
 
-Linear Regression was chosen for its simplicity, interpretability, and effectiveness in modeling linear relationships between independent variables and the target variable (price).
+### 🔹 Random Forest Regressor
+* Ensemble of decision trees.  
+* Handles non-linear patterns well.  
+* Reduces variance compared to single decision tree.  
 
-### 🔸 Input Features:
-
-* Numerical: area, bedrooms, bathrooms, stories, parking
-* Categorical: Converted using one-hot encoding
-
-### 🔸 Training Process:
-
-* Train-test split (80/20)
-* Linear Regression model trained using training data
-* No hyperparameter tuning needed due to model simplicity
-
-### 🔸 Prediction:
-
-* Predict prices on test data
-* Compare predictions with actual values
+### 🔹 XGBoost Regressor
+* Gradient boosting algorithm.  
+* Highly accurate and efficient for tabular data.  
+* Provides feature importance.  
 
 ---
 
 ## 📊 Model Evaluation
 
-| Metric                   | Value                 |
-| ------------------------ | --------------------- |
-| Mean Squared Error (MSE) | 1,771,751,116,594.035 |
-| Root MSE (RMSE)          | 1,331,071.42          |
-| R² Score                 | 0.649                 |
+| Algorithm             | RMSE   | R² Score |
+|---------------------- | ------ | -------- |
+| Linear Regression     | 4.9   | 0.67     |
+| Random Forest         | 2.8   | 0.89     |
+| XGBoost Regressor     | 2.55   | 0.91     |
 
-The model explains approximately 65% of the variance in house prices.
+✅ **XGBoost performed the best**, explaining ~91% of the variance in house prices.  
+Linear Regression provided a good baseline, while Random Forest also achieved strong results.  
 
 ---
 
 ## 📈 Visualization
 
-To better understand the model's performance, we created a scatter plot comparing the predicted house prices against the actual values. Ideally, if the predictions were perfect, all points would lie along the diagonal line. In our case, the plot shows that most of the points are reasonably close to this line, indicating that the model has learned the underlying pattern in the data to a good extent. Although there are some deviations, the results suggest a fair level of accuracy for a simple regression model.
+1. **Prediction vs Actual** – Scatter plots for each model to show accuracy.  
+2. **Feature Importance** – From Random Forest & XGBoost, showing key features like `RM`, `LSTAT`, `PTRATIO`.  
+3. **Comparison Bar Chart** – RMSE/R² comparison across algorithms.  
 
 ---
 
 ## 🚀 Future Scope
 
-* Use advanced algorithms like Random Forest, XGBoost
-* Incorporate location-based data (longitude, latitude)
-* Deploy as a web-based app with user input form
-* Introduce time-dependent factors and economic indicators
+* Apply hyperparameter tuning (GridSearchCV / RandomizedSearchCV).  
+* Add more features (e.g., location, economic indicators).  
+* Deploy as a **Flask/Django web app** for real-time predictions.  
+* Try deep learning models (Neural Networks).  
 
 ---
 
 ## ✅ Summary
 
-This project demonstrates how to apply machine learning (Linear Regression) to predict house prices. The process includes data preprocessing, model training, evaluation, and visualization to ensure a practical and deployable solution.
+This project compares **three machine learning algorithms** for predicting Boston housing prices.  
+While Linear Regression serves as a baseline, **XGBoost provides the most accurate predictions**, proving the effectiveness of gradient boosting for regression tasks.  
+
+---
+📜 License: MIT
+
